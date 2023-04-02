@@ -12,7 +12,7 @@ public class Car extends Vehicle {
     }
     @Override
     public String toString() {
-        return null;
+        return super.toString() + String.format(", numDoors=%d, bodyStyle=%s}",getNumDoors(),getBodyStyle());
     }
 
     public int getNumDoors() {

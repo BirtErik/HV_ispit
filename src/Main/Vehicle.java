@@ -17,7 +17,10 @@ public abstract class Vehicle {
     }
 
     @Override
-    public abstract String toString();
+    public String toString(){
+       return String.format("%s{make=%s, model=%s, year=%d, color=%s, vin=%d, fuelType=%s",
+               getClass().getName(),getMake(),getModel(),getYear(),getColor(),getFuelType());
+    }
 
     public int getVin() {
         return vin;

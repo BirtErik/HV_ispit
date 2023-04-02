@@ -10,7 +10,7 @@ public class Truck extends Vehicle{
 
     @Override
     public String toString() {
-        return null;
+        return super.toString() + String.format("loadCapacity=%d}",getLoadCapacity());
     }
 
     public int getLoadCapacity() {
