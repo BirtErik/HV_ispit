@@ -17,7 +17,11 @@ public class Truck extends Vehicle{
         return loadCapacity;
     }
 
-    public void setLoadCapacity(int loadCapacity) {
-        this.loadCapacity = loadCapacity;
+    public void setLoadCapacity(int loadCapacity) throws IllegalArgumentException{
+        if(loadCapacity > 0 && loadCapacity <= 10000){
+            this.loadCapacity = loadCapacity;
+        }else {
+            throw new IllegalArgumentException("Load capacity cannot be less than 0 or higher than 10000");
+        }
     }
 }

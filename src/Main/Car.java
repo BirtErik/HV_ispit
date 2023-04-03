@@ -1,11 +1,13 @@
 package Main;
 
+import java.util.Objects;
+
 public class Car extends Vehicle {
     private int numDoors;
     private String bodyStyle;
 
     public Car(String make, String model, int year, String color, int vin, String fuelType,
-               int loadCapacity, int numDoors, String bodyStyle) {
+                int numDoors, String bodyStyle) {
         super(make,model,year,color,vin,fuelType);
         setNumDoors(numDoors);
         setBodyStyle(bodyStyle);
@@ -19,8 +21,13 @@ public class Car extends Vehicle {
         return numDoors;
     }
 
-    public void setNumDoors(int numDoors) {
-        this.numDoors = numDoors;
+    public void setNumDoors(int numDoors) throws IllegalArgumentException {
+        if (numDoors > 0 && numDoors <= 6){
+            this.numDoors = numDoors;
+        }else {
+            throw new IllegalArgumentException("Number of doors cannot be less than 1 or higher than 6!");
+        }
+
     }
 
     public String getBodyStyle() {
@@ -28,6 +35,10 @@ public class Car extends Vehicle {
     }
 
     public void setBodyStyle(String bodyStyle) {
-        this.bodyStyle = bodyStyle;
+        if(Objects.equals(bodyStyle, " ")){
+            throw new IllegalArgumentException("Body style cannot be empty string!");
+        }else {
+            this.bodyStyle = bodyStyle;
+        }
     }
 }
