@@ -1,5 +1,9 @@
 package Main;
 
+/**
+ * Child klasa Vehicle-a
+ * @author Erik Birt
+ */
 public class Truck extends Vehicle{
     private int loadCapacity;
 

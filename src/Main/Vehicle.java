@@ -3,6 +3,10 @@ package Main;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Apstraktna bazna klasa Vehicle
+ * @author Erik Birt
+ */
 public abstract class Vehicle {
     private String make;
     private String model;

@@ -2,6 +2,10 @@ package Main;
 
 import java.util.Objects;
 
+/**
+ * Child klasa Vehicle-a
+ * @author Erik Birt
+ */
 public class Car extends Vehicle {
     private int numDoors;
     private String bodyStyle;
