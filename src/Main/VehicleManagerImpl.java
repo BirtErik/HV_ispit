@@ -9,17 +9,17 @@ public class VehicleManagerImpl implements VehicleManager {
         fleet = new ArrayList<>();
     }
     @Override
-    public void AddToFleet(Vehicle vehicle) {
+    public void AddToFleet(Vehicle vehicle) throws DuplicateVehicleException {
         for (var value : fleet){
             if(value.getVin() == vehicle.getVin()){
-                //throw new IllegalArgumentException();
+                throw new DuplicateVehicleException("Vehicle with this %d vin already exist in this fleet".formatted(vehicle.getVin()));
             }
         }
         fleet.add(vehicle);
     }
 
     @Override
-    public void DeleteFromFleet(int vin) {
+    public void DeleteFromFleet(int vin) throws NoSuchVehicleException{
         boolean flag = false;
         for(var value : fleet){
             if(value.getVin() == vin){
@@ -28,7 +28,8 @@ public class VehicleManagerImpl implements VehicleManager {
             }
         }
         if (!flag){
-            //throw new NoSuchVehicleException();
+            throw new NoSuchVehicleException(("Fleet doesn't contain a vehicle with this %d name " +
+                    "and it cannot be deleted").formatted(vin));
         }
     }
 
@@ -47,7 +48,7 @@ public class VehicleManagerImpl implements VehicleManager {
     }
 
     @Override
-    public void SearchFleetModel(String model) {
+    public void SearchFleetModel(String model) throws NoSuchVehicleException{
         boolean flag = false;
         for (var value : fleet){
             if (value.getModel().equalsIgnoreCase(model)){
@@ -56,12 +57,12 @@ public class VehicleManagerImpl implements VehicleManager {
             }
         }
         if(!flag){
-            //throw
+            throw new NoSuchVehicleException("Fleet doesn't contain a vehicle with this %s model name".formatted(model));
         }
     }
 
     @Override
-    public void SearchFleetMake(String make) {
+    public void SearchFleetMake(String make) throws NoSuchVehicleException{
         boolean flag = false;
         for(var value : fleet){
             if(value.getMake().equalsIgnoreCase(make)){
@@ -70,7 +71,7 @@ public class VehicleManagerImpl implements VehicleManager {
             }
         }
         if(!flag){
-            //throw
+            throw new NoSuchVehicleException("Fleet doesn't contain a vehicle with this %s manufacturer's name".formatted(make));
         }
     }
 
